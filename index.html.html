@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G7Cripto — Convierte tus ingresos digitales en dinero real</title>
+<meta name="description" content="G7Cripto consolida los pagos de todas tus plataformas digitales en un solo saldo. Retirá cuando quieras en cripto o en tu moneda local. Same-day. Sin montos mínimos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Caveat:wght@600;700&family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:       #0a0e2a;
+  --navy2:      #0d1235;
+  --navy3:      #111840;
+  --indigo:     #1a2260;
+  --indigo2:    #1e2d7a;
+  --cyan:       #00d4ff;
+  --cyan2:      #00b8e0;
+  --cyan-dim:   rgba(0,212,255,0.12);
+  --cyan-dim2:  rgba(0,212,255,0.06);
+  --cyan-glow:  rgba(0,212,255,0.25);
+  --white:      #ffffff;
+  --white90:    rgba(255,255,255,0.9);
+  --white70:    rgba(255,255,255,0.7);
+  --white50:    rgba(255,255,255,0.5);
+  --white30:    rgba(255,255,255,0.3);
+  --white15:    rgba(255,255,255,0.15);
+  --white08:    rgba(255,255,255,0.08);
+  --white05:    rgba(255,255,255,0.05);
+  --border:     rgba(255,255,255,0.1);
+  --border2:    rgba(0,212,255,0.25);
+  --yellow:     #ffd600;
+  --radius:     16px;
+  --radius-sm:  10px;
+  --radius-lg:  24px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── UTILITIES ─────────────────────── */
+.container { max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; }
+.cyan { color: var(--cyan); }
+.script { font-family: 'Caveat', cursive; color: var(--cyan); }
+.tag-pill {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 4px 14px; border-radius: 20px;
+  background: var(--cyan-dim); color: var(--cyan);
+  border: 1px solid var(--border2);
+}
+
+/* ─── NAV ─────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,14,42,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.5rem; height: 64px; max-width: 1160px; margin: 0 auto;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-mark {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--indigo2) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 14px; color: var(--navy);
+  box-shadow: 0 0 16px var(--cyan-glow);
+}
+.nav-logo-name {
+  font-family: 'Nunito', sans-serif; font-weight: 900;
+  font-size: 20px; color: var(--white); letter-spacing: -0.01em;
+}
+.nav-logo-name span { color: var(--cyan); }
+.nav-countries {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--white05); border: 1px solid var(--border);
+  border-radius: 20px; padding: 4px 14px;
+}
+.nav-country { font-size: 18px; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--white70); text-decoration: none; }
+.nav-links a:hover { color: var(--cyan); }
+.nav-cta {
+  background: var(--cyan); color: var(--navy);
+  padding: 8px 20px; border-radius: 8px;
+  font-size: 14px; font-weight: 700; text-decoration: none;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  transition: all 0.2s; box-shadow: 0 0 20px var(--cyan-glow);
+}
+.nav-cta:hover { background: #33dcff; box-shadow: 0 0 30px var(--cyan-glow); }
+
+/* ─── HERO ─────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 7rem 1.5rem 4rem;
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 50% at 70% 50%, rgba(0,212,255,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 10% 80%, rgba(26,34,96,0.8) 0%, transparent 60%),
+    linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%);
+}
+.hero-dots {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.06;
+  background-image: radial-gradient(circle, rgba(0,212,255,0.8) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.hero-inner {
+  max-width: 1160px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cyan-dim); border: 1px solid var(--border2);
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 1.5rem;
+  font-size: 12px; font-weight: 700; color: var(--cyan);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+.hero-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 900; line-height: 1.1;
+  letter-spacing: -0.02em; margin-bottom: 0.5rem;
+}
+.hero-script {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700; color: var(--cyan);
+  display: block; margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.hero-sub {
+  font-size: 16px; color: var(--white70); line-height: 1.7;
+  margin-bottom: 2rem; font-weight: 400; max-width: 480px;
+}
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 2rem; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cyan); color: var(--navy);
+  padding: 14px 28px; border-radius: 12px;
+  font-size: 15px; font-weight: 800; text-decoration: none;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  box-shadow: 0 0 24px var(--cyan-glow);
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: #33dcff; transform: translateY(-2px); box-shadow: 0 4px 32px var(--cyan-glow); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--white);
+  border: 2px solid var(--white30);
+  padding: 14px 28px; border-radius: 12px;
+  font-size: 15px; font-weight: 700; text-decoration: none;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); }
+.hero-trust { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.hero-stat { text-align: left; }
+.hero-stat-num {
+  font-family: 'Nunito', sans-serif; font-size: 1.6rem; font-weight: 900;
+  color: var(--cyan); line-height: 1;
+}
+.hero-stat-label { font-size: 12px; color: var(--white50); font-weight: 500; }
+.hero-stat-divider { width: 1px; background: var(--border); }
+
+/* App mockup */
+.hero-visual { display: flex; justify-content: center; position: relative; }
+.mockup-glow {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.phone-wrap {
+  width: 270px;
+  background: linear-gradient(160deg, #1a2260 0%, #0d1235 100%);
+  border-radius: 36px;
+  border: 1px solid rgba(0,212,255,0.3);
+  padding: 20px 14px;
+  box-shadow: 0 0 0 1px rgba(0,212,255,0.1), 0 40px 80px rgba(0,0,0,0.6);
+  position: relative; z-index: 1;
+}
+.phone-notch {
+  width: 70px; height: 5px; border-radius: 3px;
+  background: var(--white15); margin: 0 auto 16px;
+}
+.phone-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.phone-greeting { font-size: 11px; color: var(--white50); }
+.phone-name { font-size: 13px; font-weight: 700; }
+.phone-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--indigo2) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800; color: var(--navy);
+}
+.phone-balance {
+  background: linear-gradient(135deg, var(--cyan) 0%, #0088bb 100%);
+  border-radius: 14px; padding: 14px; margin-bottom: 12px;
+}
+.phone-balance-label { font-size: 10px; color: rgba(10,14,42,0.7); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.phone-balance-amount { font-family: 'Nunito', sans-serif; font-size: 26px; font-weight: 900; color: var(--navy); letter-spacing: -0.02em; }
+.phone-balance-sub { font-size: 10px; color: rgba(10,14,42,0.6); margin-top: 2px; }
+.phone-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.phone-action {
+  background: var(--white08); border: 1px solid var(--border);
+  border-radius: 10px; padding: 10px 6px; text-align: center;
+}
+.phone-action-icon { font-size: 15px; margin-bottom: 3px; }
+.phone-action-label { font-size: 9px; color: var(--white70); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.phone-sec-label { font-size: 9px; color: var(--white30); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+.phone-platform { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; background: var(--white05); border-radius: 8px; margin-bottom: 5px; border: 1px solid var(--border); }
+.phone-platform-dot { width: 8px; height: 8px; border-radius: 50%; margin-right: 7px; }
+.phone-platform-name { font-size: 10px; color: var(--white70); font-weight: 600; }
+.phone-platform-amount { font-size: 10px; font-weight: 800; color: var(--cyan); }
+
+/* ─── PAÍSES ────────────────────────── */
+.paises-strip {
+  background: var(--navy3);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 1.5rem;
+}
+.paises-inner {
+  max-width: 1160px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.5rem; flex-wrap: wrap;
+}
+.pais-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--white05); border: 1px solid var(--border);
+  border-radius: 20px; padding: 5px 14px;
+  font-size: 13px; font-weight: 600; color: var(--white70);
+}
+.pais-flag { font-size: 16px; }
+.pais-sep { color: var(--border); font-size: 18px; }
+
+/* ─── SECTIONS ──────────────────────── */
+section { padding: 5rem 1.5rem; }
+.sec-label {
+  font-size: 11px; font-weight: 800; color: var(--cyan);
+  text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;
+}
+.sec-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 900; line-height: 1.15;
+  letter-spacing: -0.02em; margin-bottom: 1rem;
+}
+.sec-sub { font-size: 16px; color: var(--white70); line-height: 1.7; max-width: 560px; font-weight: 400; }
+.sec-header { margin-bottom: 3rem; }
+.sec-header.center { text-align: center; }
+.sec-header.center .sec-sub { margin: 0 auto; }
+
+/* ─── MÉTRICAS ──────────────────────── */
+.metricas { background: var(--navy2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
+.metricas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1160px; margin: 0 auto; }
+.metrica-item { text-align: center; }
+.metrica-num {
+  font-family: 'Nunito', sans-serif; font-size: 3rem; font-weight: 900;
+  color: var(--cyan); letter-spacing: -0.03em; line-height: 1;
+  text-shadow: 0 0 30px var(--cyan-glow);
+}
+.metrica-label { font-size: 14px; color: var(--white70); margin-top: 6px; font-weight: 500; }
+.metrica-div { width: 1px; background: var(--border); margin: 0 auto; }
+
+/* ─── PROBLEMA ──────────────────────── */
+.problema { background: var(--navy); }
+.problema-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.pains { display: flex; flex-direction: column; gap: 12px; }
+.pain {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 1.125rem; background: var(--white05);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  transition: border-color 0.2s;
+}
+.pain:hover { border-color: rgba(0,212,255,0.3); }
+.pain-ico {
+  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+  background: rgba(239,68,68,0.12); display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.pain-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+.pain-desc { font-size: 13px; color: var(--white50); line-height: 1.5; }
+.problema-cta-box {
+  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(26,34,96,0.5) 100%);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-lg); padding: 2.5rem;
+}
+.problema-cta-script {
+  font-family: 'Caveat', cursive; font-size: 2rem; font-weight: 700;
+  color: var(--cyan); margin-bottom: 0.75rem; display: block;
+}
+.problema-cta-title {
+  font-family: 'Nunito', sans-serif; font-size: 1.6rem; font-weight: 900;
+  line-height: 1.2; margin-bottom: 1rem;
+}
+.problema-cta-sub { font-size: 14px; color: var(--white70); line-height: 1.6; margin-bottom: 1.5rem; }
+
+/* ─── SOLUCIÓN ──────────────────────── */
+.solucion { background: var(--navy2); }
+.solucion-top { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 3.5rem; }
+.saldo-display {
+  background: linear-gradient(135deg, var(--navy3) 0%, var(--indigo) 100%);
+  border: 1px solid var(--border2); border-radius: var(--radius-lg); padding: 1.75rem;
+  box-shadow: 0 0 40px rgba(0,212,255,0.08);
+}
+.saldo-label { font-size: 11px; font-weight: 700; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+.saldo-amount { font-family: 'Nunito', sans-serif; font-size: 2.8rem; font-weight: 900; color: var(--white); letter-spacing: -0.03em; }
+.saldo-sub { font-size: 12px; color: var(--white50); margin-top: 4px; margin-bottom: 1rem; }
+.saldo-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+.saldo-badge {
+  font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+  background: var(--cyan-dim); color: var(--cyan); border: 1px solid var(--border2);
+}
+.entradas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 2rem; }
+.entrada-card {
+  background: var(--navy3); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.375rem;
+  transition: all 0.25s;
+}
+.entrada-card:hover { border-color: var(--border2); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,212,255,0.08); }
+.entrada-card.top { border-color: var(--border2); background: linear-gradient(135deg, rgba(0,212,255,0.07) 0%, var(--navy3) 100%); }
+.entrada-eyebrow { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+.entrada-title { font-size: 15px; font-weight: 800; margin-bottom: 6px; font-family: 'Nunito', sans-serif; }
+.entrada-desc { font-size: 12px; color: var(--white50); line-height: 1.55; margin-bottom: 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip {
+  font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px;
+  background: var(--white08); color: var(--white70); border: 1px solid var(--border);
+}
+.chip.c { background: var(--cyan-dim); color: var(--cyan); border-color: var(--border2); }
+
+/* Salidas */
+.salidas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.salida {
+  border-radius: var(--radius); padding: 1.75rem; border: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.salida.cripto { background: linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(0,212,255,0.05) 100%); border-color: rgba(139,92,246,0.3); }
+.salida.fiat { background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(26,34,96,0.3) 100%); border-color: var(--border2); }
+.salida-big { position: absolute; top: 1rem; right: 1.5rem; font-family: 'Nunito', sans-serif; font-size: 5rem; font-weight: 900; opacity: 0.05; line-height: 1; }
+.salida-tag { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.salida-title { font-family: 'Nunito', sans-serif; font-size: 1.3rem; font-weight: 900; margin-bottom: 8px; letter-spacing: -0.01em; }
+.salida-desc { font-size: 13px; color: var(--white70); line-height: 1.6; }
+
+/* ─── CÓMO FUNCIONA ─────────────────── */
+.como { background: var(--navy); }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+.steps::before {
+  content: '';
+  position: absolute; top: 32px; left: calc(12.5% + 16px); right: calc(12.5% + 16px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan) 0%, rgba(0,212,255,0.2) 100%);
+  z-index: 0;
+}
+.step { padding: 0 1.25rem; position: relative; z-index: 1; }
+.step-circle {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--navy2);
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 20px var(--cyan-glow);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Nunito', sans-serif; font-size: 22px; font-weight: 900; color: var(--cyan);
+  margin-bottom: 1.25rem;
+}
+.step-title { font-size: 15px; font-weight: 800; margin-bottom: 6px; font-family: 'Nunito', sans-serif; }
+.step-desc { font-size: 13px; color: var(--white50); line-height: 1.55; }
+.step-script { font-family: 'Caveat', cursive; font-size: 1.3rem; color: var(--cyan); display: block; margin-bottom: 4px; }
+
+/* ─── BENEFICIOS ────────────────────── */
+.beneficios { background: var(--navy2); }
+.benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.benefit {
+  background: var(--navy3); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.5rem;
+  transition: all 0.25s;
+}
+.benefit:hover { border-color: var(--border2); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,212,255,0.06); }
+.benefit-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--cyan-dim); border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 1rem;
+}
+.benefit-title { font-size: 15px; font-weight: 800; margin-bottom: 6px; font-family: 'Nunito', sans-serif; }
+.benefit-desc { font-size: 13px; color: var(--white50); line-height: 1.55; }
+.benefit-tag {
+  display: inline-block; margin-top: 10px;
+  font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--cyan); background: var(--cyan-dim); border: 1px solid var(--border2);
+  padding: 3px 10px; border-radius: 20px;
+}
+
+/* ─── SIMULADOR ─────────────────────── */
+.simulador { background: var(--navy); }
+.sim-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.sim-card {
+  background: linear-gradient(135deg, var(--navy2) 0%, var(--indigo) 100%);
+  border: 1px solid var(--border2); border-radius: var(--radius-lg); padding: 2rem;
+  box-shadow: 0 0 60px rgba(0,212,255,0.08);
+}
+.sim-header { font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 900; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+.sim-lbl { font-size: 11px; font-weight: 700; color: var(--white50); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.sim-field { margin-bottom: 1.25rem; }
+.sim-input {
+  width: 100%; background: var(--navy);
+  border: 1px solid var(--border2); border-radius: 10px;
+  padding: 14px 16px;
+  font-family: 'Nunito', sans-serif; font-size: 24px; font-weight: 900; color: var(--white);
+  outline: none; transition: border-color 0.2s;
+}
+.sim-input:focus { border-color: var(--cyan); box-shadow: 0 0 16px var(--cyan-glow); }
+.sim-input::placeholder { color: var(--white15); }
+.sim-select {
+  width: 100%; background: var(--navy); border: 1px solid var(--border2);
+  border-radius: 10px; padding: 12px 16px;
+  font-family: 'Barlow', sans-serif; font-size: 15px; font-weight: 600; color: var(--white);
+  outline: none; cursor: pointer; appearance: none;
+}
+.sim-select option { background: #0d1235; }
+.sim-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sim-method {
+  padding: 12px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--navy);
+  cursor: pointer; text-align: center; transition: all 0.2s;
+}
+.sim-method.on { border-color: var(--cyan); background: var(--cyan-dim); box-shadow: 0 0 16px var(--cyan-glow); }
+.sim-method-name { font-size: 13px; font-weight: 700; }
+.sim-method-sub { font-size: 11px; color: var(--white50); margin-top: 2px; }
+.sim-result {
+  background: var(--navy); border: 1px solid var(--cyan);
+  border-radius: 12px; padding: 1.25rem; margin-top: 1.25rem;
+  box-shadow: 0 0 24px var(--cyan-glow);
+}
+.sim-result-label { font-size: 11px; font-weight: 800; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.sim-result-amount {
+  font-family: 'Nunito', sans-serif; font-size: 2.2rem; font-weight: 900;
+  color: var(--cyan); letter-spacing: -0.02em;
+  text-shadow: 0 0 20px var(--cyan-glow);
+}
+.sim-result-details { display: flex; gap: 16px; margin-top: 8px; flex-wrap: wrap; }
+.sim-detail { font-size: 12px; color: var(--white50); }
+.sim-detail span { color: var(--white70); font-weight: 600; }
+.sim-btn {
+  width: 100%; background: var(--cyan); color: var(--navy);
+  border: none; border-radius: 10px; padding: 14px;
+  font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 900;
+  cursor: pointer; margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.04em;
+  transition: all 0.2s; box-shadow: 0 0 20px var(--cyan-glow);
+}
+.sim-btn:hover { background: #33dcff; }
+
+/* ─── MÉTODOS DE PAGO ───────────────── */
+.metodos { background: var(--navy2); }
+.metodos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.metodo-card {
+  background: var(--navy3); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.375rem; text-align: center;
+  transition: all 0.25s;
+}
+.metodo-card:hover { border-color: var(--border2); box-shadow: 0 0 24px rgba(0,212,255,0.08); }
+.metodo-icon { font-size: 36px; margin-bottom: 10px; display: block; }
+.metodo-name { font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 900; margin-bottom: 5px; }
+.metodo-desc { font-size: 12px; color: var(--white50); line-height: 1.5; }
+.metodo-tags { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-top: 10px; }
+
+/* ─── TESTIMONIOS ───────────────────── */
+.testimonios { background: var(--navy); }
+.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.test-card {
+  background: var(--navy2); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.5rem;
+}
+.test-stars { color: var(--yellow); font-size: 14px; letter-spacing: 3px; margin-bottom: 10px; }
+.test-text { font-size: 14px; color: var(--white70); line-height: 1.65; margin-bottom: 14px; font-style: italic; }
+.test-author { display: flex; align-items: center; gap: 10px; }
+.test-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--indigo2) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 900; color: var(--navy);
+}
+.test-name { font-size: 13px; font-weight: 700; }
+.test-loc { font-size: 12px; color: var(--white50); }
+
+/* ─── CONFIANZA ─────────────────────── */
+.confianza { background: var(--navy2); }
+.trust-box {
+  background: linear-gradient(135deg, rgba(0,212,255,0.07) 0%, rgba(26,34,96,0.4) 100%);
+  border: 1px solid var(--border2); border-radius: var(--radius-lg);
+  padding: 3rem; text-align: center; margin-bottom: 2rem;
+  box-shadow: 0 0 60px rgba(0,212,255,0.05);
+}
+.trust-script { font-family: 'Caveat', cursive; font-size: 1.6rem; font-weight: 700; color: var(--cyan); display: block; margin-bottom: 0.5rem; }
+.trust-text { font-size: 15px; color: var(--white70); line-height: 1.7; max-width: 660px; margin: 0 auto 1.5rem; }
+.trust-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 1.5rem; }
+.trust-badge {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; padding: 7px 16px; border-radius: 20px;
+  background: var(--navy); color: var(--white70);
+  border: 1px solid var(--border2);
+}
+.trust-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); }
+.trust-partners { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+.trust-partner { font-size: 14px; color: var(--white50); }
+.trust-partner strong { color: var(--white90); }
+.trust-link-row { text-align: center; margin-top: 1.25rem; display: flex; flex-direction: column; gap: 6px; align-items: center; }
+.trust-link { font-size: 13px; color: var(--white30); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ─── FAQ ───────────────────────────── */
+.faq { background: var(--navy); }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.faq-item {
+  background: var(--navy2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 1.25rem; cursor: pointer; transition: all 0.2s;
+}
+.faq-item:hover { border-color: rgba(0,212,255,0.25); }
+.faq-item.open { border-color: var(--border2); background: linear-gradient(135deg, rgba(0,212,255,0.07) 0%, var(--navy2) 100%); }
+.faq-q { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.faq-q-text { font-size: 14px; font-weight: 700; line-height: 1.4; }
+.faq-ico {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--white05); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--white50); font-size: 16px; font-weight: 400;
+  transition: all 0.2s;
+}
+.faq-item.open .faq-ico { background: var(--cyan-dim); border-color: var(--border2); color: var(--cyan); transform: rotate(45deg); }
+.faq-a { font-size: 13px; color: var(--white50); line-height: 1.65; margin-top: 10px; display: none; }
+.faq-item.open .faq-a { display: block; }
+
+/* ─── DESCARGA ──────────────────────── */
+.descarga { background: var(--navy2); }
+.descarga-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.store-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.5rem; }
+.store-btn {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--navy3); border: 1px solid var(--border2);
+  border-radius: 12px; padding: 12px 22px; text-decoration: none;
+  transition: all 0.2s; box-shadow: 0 0 0 0 var(--cyan-glow);
+}
+.store-btn:hover { border-color: var(--cyan); box-shadow: 0 0 24px var(--cyan-glow); }
+.store-ico { font-size: 26px; }
+.store-top { font-size: 10px; color: var(--white50); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.store-name { font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 900; color: var(--white); }
+.descarga-feats { display: flex; flex-direction: column; gap: 14px; margin-top: 2rem; }
+.descarga-feat { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--white70); font-weight: 500; }
+.feat-check {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--cyan-dim); border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  color: var(--cyan); font-size: 12px; font-weight: 800;
+}
+.descarga-phone { display: flex; justify-content: center; position: relative; }
+.descarga-glow {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%);
+}
+
+/* ─── CTA FINAL ─────────────────────── */
+.cta-final { background: var(--navy); }
+.cta-final-box {
+  background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(26,34,96,0.6) 50%, rgba(10,14,42,0) 100%);
+  border: 1px solid var(--border2); border-radius: var(--radius-lg);
+  padding: 5rem 3rem; text-align: center;
+  box-shadow: 0 0 80px rgba(0,212,255,0.07);
+}
+.cta-final-script { font-family: 'Caveat', cursive; font-size: 2rem; font-weight: 700; color: var(--cyan); display: block; margin-bottom: 0.5rem; }
+.cta-final-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900; letter-spacing: -0.02em;
+  margin-bottom: 1rem; line-height: 1.1;
+}
+.cta-final-sub { font-size: 16px; color: var(--white70); margin-bottom: 2.5rem; line-height: 1.6; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+.cta-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.cta-tag {
+  font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px;
+  background: var(--white05); color: var(--white50); border: 1px solid var(--border);
+}
+
+/* ─── FOOTER ────────────────────────── */
+footer {
+  background: var(--navy2);
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem 2rem;
+}
+.footer-inner { max-width: 1160px; margin: 0 auto; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; }
+.footer-logo-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.footer-mark { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(135deg, var(--cyan) 0%, var(--indigo2) 100%); display: flex; align-items: center; justify-content: center; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 13px; color: var(--navy); }
+.footer-brand { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 18px; }
+.footer-brand span { color: var(--cyan); }
+.footer-tagline { font-size: 13px; color: var(--white50); max-width: 280px; line-height: 1.5; }
+.footer-links-group { }
+.footer-links-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--white50); margin-bottom: 10px; }
+.footer-links { display: flex; flex-direction: column; gap: 8px; }
+.footer-links a { font-size: 13px; color: var(--white50); text-decoration: none; }
+.footer-links a:hover { color: var(--cyan); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; }
+.footer-copy { font-size: 12px; color: var(--white30); margin-bottom: 6px; }
+.footer-disclaimer { font-size: 11px; color: var(--white15); line-height: 1.6; max-width: 800px; }
+
+/* ─── RESPONSIVE ────────────────────── */
+@media (max-width: 960px) {
+  .hero-inner,.problema-grid,.solucion-top,.sim-wrap,.descarga-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-visual,.descarga-phone { display: none; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .steps::before { display: none; }
+  .benefits-grid,.entradas-grid,.metodos-grid,.test-grid { grid-template-columns: 1fr 1fr; }
+  .metricas-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .salidas-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  nav .nav-links,.nav-countries { display: none; }
+  section { padding: 3.5rem 1.25rem; }
+  .steps { grid-template-columns: 1fr; }
+  .benefits-grid,.entradas-grid,.metodos-grid,.test-grid { grid-template-columns: 1fr; }
+  .cta-final-box { padding: 3rem 1.5rem; }
+  .footer-top { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">G7</div>
+      <span class="nav-logo-name">G7<span>Cripto</span></span>
+    </a>
+    <div class="nav-countries">
+      <span class="nav-country">🇨🇴</span>
+      <span class="nav-country">🇲🇽</span>
+      <span class="nav-country">🇦🇷</span>
+      <span class="nav-country">🇨🇱</span>
+      <span class="nav-country">🇪🇨</span>
+      <span class="nav-country">🇵🇦</span>
+      <span class="nav-country">🇺🇾</span>
+    </div>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#como">Cómo funciona</a>
+        <a href="#simulador">Simulador</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a href="#descarga" class="nav-cta">Descargar App</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <div class="hero-dot"></div>
+        Disponible en 7 países de LATAM
+      </div>
+      <h1 class="hero-title">Todas tus plataformas,<br>un solo saldo.</h1>
+      <span class="hero-script">¡Retirá cuando quieras!</span>
+      <p class="hero-sub">G7Cripto consolida los pagos de todas tus plataformas digitales en un saldo único en USD. Retirás en cripto o en tu moneda local — el mismo día que lo solicitás, sin montos mínimos.</p>
+      <div class="hero-ctas">
+        <a href="https://play.google.com/store" class="btn-primary">▶ Google Play</a>
+        <a href="https://apps.apple.com" class="btn-secondary"> App Store</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-stat">
+          <div class="hero-stat-num">0</div>
+          <div class="hero-stat-label">Monto mínimo</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">= día</div>
+          <div class="hero-stat-label">Al solicitar retiro</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">+350</div>
+          <div class="hero-stat-label">Criptomonedas</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">7</div>
+          <div class="hero-stat-label">Países LATAM</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="mockup-glow"></div>
+      <div class="phone-wrap">
+        <div class="phone-notch"></div>
+        <div class="phone-header">
+          <div>
+            <div class="phone-greeting">Bienvenida,</div>
+            <div class="phone-name">Ana García</div>
+          </div>
+          <div class="phone-avatar">AG</div>
+        </div>
+        <div class="phone-balance">
+          <div class="phone-balance-label">Saldo disponible (USD)</div>
+          <div class="phone-balance-amount">$1,248.50</div>
+          <div class="phone-balance-sub">3 plataformas · Actualizado hoy</div>
+        </div>
+        <div class="phone-actions">
+          <div class="phone-action">
+            <div class="phone-action-icon">💸</div>
+            <div class="phone-action-label">Retirar cripto</div>
+          </div>
+          <div class="phone-action">
+            <div class="phone-action-icon">🏦</div>
+            <div class="phone-action-label">Banco local</div>
+          </div>
+        </div>
+        <div class="phone-sec-label">Pagos recibidos</div>
+        <div class="phone-platform">
+          <div style="display:flex;align-items:center;">
+            <div class="phone-platform-dot" style="background:#e91e8c;"></div>
+            <span class="phone-platform-name">Plataforma A</span>
+          </div>
+          <span class="phone-platform-amount">+$520.00</span>
+        </div>
+        <div class="phone-platform">
+          <div style="display:flex;align-items:center;">
+            <div class="phone-platform-dot" style="background:#ff6b35;"></div>
+            <span class="phone-platform-name">Plataforma B</span>
+          </div>
+          <span class="phone-platform-amount">+$418.50</span>
+        </div>
+        <div class="phone-platform">
+          <div style="display:flex;align-items:center;">
+            <div class="phone-platform-dot" style="background:#00d4ff;"></div>
+            <span class="phone-platform-name">Plataforma C</span>
+          </div>
+          <span class="phone-platform-amount">+$310.00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAÍSES STRIP -->
+<div class="paises-strip">
+  <div class="paises-inner">
+    <div class="pais-pill"><span class="pais-flag">🇨🇴</span>Colombia</div>
+    <span class="pais-sep">·</span>
+    <div class="pais-pill"><span class="pais-flag">🇲🇽</span>México</div>
+    <span class="pais-sep">·</span>
+    <div class="pais-pill"><span class="pais-flag">🇦🇷</span>Argentina</div>
+    <span class="pais-sep">·</span>
+    <div class="pais-pill"><span class="pais-flag">🇨🇱</span>Chile</div>
+    <span class="pais-sep">·</span>
+    <div class="pais-pill"><span class="pais-flag">🇪🇨</span>Ecuador</div>
+    <span class="pais-sep">·</span>
+    <div class="pais-pill"><span class="pais-flag">🇵🇦</span>Panamá</div>
+    <span class="pais-sep">·</span>
+    <div class="pais-pill"><span class="pais-flag">🇺🇾</span>Uruguay</div>
+  </div>
+</div>
+
+<!-- MÉTRICAS -->
+<div class="metricas">
+  <div class="metricas-grid">
+    <div class="metrica-item">
+      <div class="metrica-num">7</div>
+      <div class="metrica-label">Países disponibles en LATAM</div>
+    </div>
+    <div class="metrica-item">
+      <div class="metrica-num">+3 años</div>
+      <div class="metrica-label">Operando en el mercado</div>
+    </div>
+    <div class="metrica-item">
+      <div class="metrica-num">MISMO DÍA</div>
+      <div class="metrica-label">Al solicitar tu retiro</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEMA -->
+<section class="problema" id="problema">
+  <div class="container">
+    <div class="problema-grid">
+      <div>
+        <div class="sec-label">El problema</div>
+        <h2 class="sec-title">Ganás en varias plataformas. El sistema financiero no está diseñado para eso.</h2>
+        <div class="pains">
+          <div class="pain">
+            <div class="pain-ico">⛔</div>
+            <div>
+              <div class="pain-title">Pagos fragmentados y sin control</div>
+              <div class="pain-desc">Cada plataforma paga diferente — USD, cripto, en distintos días — y no hay forma de verlo todo junto en un solo lugar.</div>
+            </div>
+          </div>
+          <div class="pain">
+            <div class="pain-ico">🔒</div>
+            <div>
+              <div class="pain-title">Bloqueos sin aviso ni explicación</div>
+              <div class="pain-desc">Cuentas cerradas en plataformas que no entienden tu modelo de negocio. Sin respaldo ni soporte real.</div>
+            </div>
+          </div>
+          <div class="pain">
+            <div class="pain-ico">💸</div>
+            <div>
+              <div class="pain-title">Comisiones del 5% al 15%</div>
+              <div class="pain-desc">Cada conversión y transferencia intermedia se lleva una parte de lo que ya es tuyo.</div>
+            </div>
+          </div>
+          <div class="pain">
+            <div class="pain-ico">⏳</div>
+            <div>
+              <div class="pain-title">Días de espera para cobrar</div>
+              <div class="pain-desc">Semanas para recibir dinero que ya te pagaron. Sin trazabilidad ni certeza de cuándo llegará.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="problema-cta-box">
+        <span class="problema-cta-script">¡La solución existe!</span>
+        <div class="problema-cta-title">El gremio del streaming digital en LATAM merece una infraestructura a la altura.</div>
+        <div class="problema-cta-sub">G7Cripto fue construido específicamente para consolidar tus pagos, eliminar bloqueos y darte control total sobre tu dinero. Mismo día. Sin mínimos.</div>
+        <a href="#descarga" class="btn-primary" style="font-size:14px;">Empezar ahora →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUCIÓN -->
+<section class="solucion" id="solucion">
+  <div class="container">
+    <div class="solucion-top">
+      <div>
+        <div class="sec-label">La solución</div>
+        <h2 class="sec-title">Un saldo para todo. Vos elegís cuándo y cómo cobrar.</h2>
+        <p class="sec-sub">G7Cripto recibe los pagos de todas tus plataformas, los consolida en un saldo único en USD y te deja retirar cuando quieras — mismo día, sin mínimos, en cripto o en tu banco.</p>
+      </div>
+      <div class="saldo-display">
+        <div class="saldo-label">Tu saldo consolidado</div>
+        <div class="saldo-amount">$1,248.50</div>
+        <div class="saldo-sub">3 plataformas · Actualizado hoy · Listo para retirar</div>
+        <div class="saldo-badges">
+          <span class="saldo-badge">Sin monto mínimo</span>
+          <span class="saldo-badge">Mismo día</span>
+          <span class="saldo-badge">Cripto o fiat</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-label" style="margin-bottom:1rem;">3 formas en que recibimos tus pagos</div>
+    <div class="entradas-grid">
+      <div class="entrada-card top">
+        <div class="entrada-eyebrow" style="color:var(--cyan);">⭐ Más popular</div>
+        <div class="entrada-title">Cripto directo</div>
+        <div class="entrada-desc">Tu plataforma paga en cripto. Recibimos en wallets verificadas vía Binance Link y lo sumamos a tu saldo en USD.</div>
+        <div class="chips">
+          <span class="chip c">USDT</span><span class="chip c">USDC</span><span class="chip c">BTC</span><span class="chip c">ETH</span><span class="chip">+350 más</span>
+        </div>
+      </div>
+      <div class="entrada-card">
+        <div class="entrada-eyebrow" style="color:#60a5fa;">💵 USD Fiat</div>
+        <div class="entrada-title">ACH / Wire en USD</div>
+        <div class="entrada-desc">Tu plataforma envía USD por ACH o Wire a G7 Business Solutions Corp (Florida). Se acredita en tu saldo.</div>
+        <div class="chips">
+          <span class="chip">ACH USA</span><span class="chip">Wire Transfer</span><span class="chip">Global66</span>
+        </div>
+      </div>
+      <div class="entrada-card">
+        <div class="entrada-eyebrow" style="color:var(--white50);">🔧 Sin restricciones</div>
+        <div class="entrada-title">Cualquier plataforma</div>
+        <div class="entrada-desc">Si tu plataforma no permite pagos a terceros, tenemos solución. Gestionamos el flujo para que el pago llegue igual.</div>
+        <div class="chips">
+          <span class="chip">100% compatible</span><span class="chip">Transparente</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-label" style="margin: 2.5rem 0 1rem;">2 formas de retirar — vos elegís cada vez</div>
+    <div class="salidas-grid">
+      <div class="salida cripto">
+        <div class="salida-big">1</div>
+        <div class="salida-tag" style="color:#a78bfa;">💎 Opción cripto</div>
+        <div class="salida-title">Directo a tu wallet personal</div>
+        <div class="salida-desc">USDT, USDC, BTC, ETH o cualquiera de las +350 criptomonedas vía Binance Link. Sin conversión. Control total de tus activos digitales.</div>
+        <div class="chips" style="margin-top:1rem;">
+          <span class="chip c">USDT</span><span class="chip c">USDC</span><span class="chip c">BTC</span><span class="chip c">ETH</span><span class="chip">+350 vía Binance</span>
+        </div>
+      </div>
+      <div class="salida fiat">
+        <div class="salida-big">2</div>
+        <div class="salida-tag" style="color:var(--cyan);">🏦 Opción fiat</div>
+        <div class="salida-title">En tu banco, en tu moneda</div>
+        <div class="salida-desc">Convertimos tu saldo a tu moneda local vía Global66 y transferimos directo a tu cuenta bancaria. COP, MXN, ARS, CLP, UYU — o USD si estás en Ecuador o Panamá.</div>
+        <div class="chips" style="margin-top:1rem;">
+          <span class="chip c">COP</span><span class="chip c">MXN</span><span class="chip c">ARS</span><span class="chip c">CLP</span><span class="chip c">USD (EC/PA)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="como" id="como">
+  <div class="container">
+    <div class="sec-header center">
+      <div class="sec-label">Proceso</div>
+      <h2 class="sec-title">En <span class="cyan">4 pasos</span> simples</h2>
+      <p class="sec-sub">Desde que descargás la app hasta que el dinero está en tu cuenta. Sin tecnicismos, sin complicaciones.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-circle">1</div>
+        <span class="step-script">¡Fácil y rápido!</span>
+        <div class="step-title">Descargás y verificás</div>
+        <div class="step-desc">KYC en minutos desde la app. Documento, contrato digital firmado y cuenta activa. Tu wallet se habilita automáticamente.</div>
+      </div>
+      <div class="step">
+        <div class="step-circle">2</div>
+        <span class="step-script">¡Ya tenés tu wallet!</span>
+        <div class="step-title">Wallet verificada activa</div>
+        <div class="step-desc">Infraestructura Binance Link habilitada. Lista para recibir más de 350 criptomonedas o pagos en USD vía ACH.</div>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <span class="step-script">¡Todo junto!</span>
+        <div class="step-title">Tus plataformas pagan</div>
+        <div class="step-desc">Todo se consolida en tu saldo USD dentro de la app. Acumulás de múltiples plataformas sin límite de tiempo ni monto.</div>
+      </div>
+      <div class="step">
+        <div class="step-circle">4</div>
+        <span class="step-script">¡MISMO DÍA!</span>
+        <div class="step-title">Retirás cuando querés</div>
+        <div class="step-desc">Pedís tu retiro, elegís cripto o banco local, y el mismo día el dinero está en tu cuenta. Sin montos mínimos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="beneficios" id="beneficios">
+  <div class="container">
+    <div class="sec-header center">
+      <div class="sec-label">Por qué G7Cripto</div>
+      <h2 class="sec-title">Todo lo que necesitás, <span class="cyan">en un solo lugar</span></h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <div class="benefit-icon">📊</div>
+        <div class="benefit-title">Consolidación total</div>
+        <div class="benefit-desc">Todas tus plataformas en un solo saldo en USD. Nunca más malabarismos entre cuentas y apps distintas.</div>
+        <span class="benefit-tag">Multi-plataforma</span>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">⚡</div>
+        <div class="benefit-title">Same-day al retirar</div>
+        <div class="benefit-desc">Solicitás tu monetización y el mismo día tenés el dinero. Sin demoras arbitrarias ni esperas de días.</div>
+        <span class="benefit-tag">Mismo día</span>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🚫</div>
+        <div class="benefit-title">Sin montos mínimos</div>
+        <div class="benefit-desc">Retirás lo que tenés, cuando querés. Sin restricciones de monto que te obliguen a esperar o acumular.</div>
+        <span class="benefit-tag">Sin límites</span>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🔐</div>
+        <div class="benefit-title">Wallet verificada KYC</div>
+        <div class="benefit-desc">Identidad verificada desde el onboarding. Contrato digital firmado. Tu cuenta con respaldo legal completo.</div>
+        <span class="benefit-tag">KYC + Contrato</span>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🌐</div>
+        <div class="benefit-title">+350 criptomonedas</div>
+        <div class="benefit-desc">USDT, USDC, BTC, ETH y cientos más vía Binance Link. Recibís y retirás en la cripto que prefieras.</div>
+        <span class="benefit-tag">Binance Link</span>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🗺️</div>
+        <div class="benefit-title">7 países LATAM</div>
+        <div class="benefit-desc">Colombia, México, Argentina, Chile, Ecuador, Panamá y Uruguay. Moneda local o USD según tu país.</div>
+        <span class="benefit-tag">7 países</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULADOR -->
+<section class="simulador" id="simulador">
+  <div class="container">
+    <div class="sim-wrap">
+      <div>
+        <div class="sec-label">Calculadora</div>
+        <h2 class="sec-title">¿Cuánto recibís si<br><span class="cyan">retirás hoy?</span></h2>
+        <p class="sec-sub">Ingresá el monto en tu saldo, elegí tu país y método de retiro. Calculamos cuánto llega a tu cuenta — sin sorpresas, con comisiones transparentes.</p>
+        <div style="margin-top:1.75rem;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--white70);font-weight:500;">
+            <span class="feat-check">✓</span> Comisiones transparentes antes de confirmar
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--white70);font-weight:500;">
+            <span class="feat-check">✓</span> Sin monto mínimo para retirar
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--white70);font-weight:500;">
+            <span class="feat-check">✓</span> Acreditación el mismo día que solicitás
+          </div>
+        </div>
+      </div>
+      <div class="sim-card">
+        <div class="sim-header">Simulador de retiro</div>
+        <div class="sim-field">
+          <div class="sim-lbl">Monto en tu saldo (USD)</div>
+          <input type="number" class="sim-input" id="simAmount" placeholder="500" min="1">
+        </div>
+        <div class="sim-field">
+          <div class="sim-lbl">País de retiro</div>
+          <select class="sim-select" id="simCountry">
+            <option value="CO">🇨🇴 Colombia (COP)</option>
+            <option value="MX">🇲🇽 México (MXN)</option>
+            <option value="AR">🇦🇷 Argentina (ARS)</option>
+            <option value="CL">🇨🇱 Chile (CLP)</option>
+            <option value="EC">🇪🇨 Ecuador (USD)</option>
+            <option value="PA">🇵🇦 Panamá (USD)</option>
+            <option value="UY">🇺🇾 Uruguay (UYU)</option>
+          </select>
+        </div>
+        <div class="sim-field">
+          <div class="sim-lbl">Método de retiro</div>
+          <div class="sim-methods">
+            <div class="sim-method on" id="mCripto" onclick="setM('cripto')">
+              <div class="sim-method-name">💎 Wallet cripto</div>
+              <div class="sim-method-sub">USDT, BTC y más</div>
+            </div>
+            <div class="sim-method" id="mFiat" onclick="setM('fiat')">
+              <div class="sim-method-name">🏦 Banco local</div>
+              <div class="sim-method-sub">Moneda de tu país</div>
+            </div>
+          </div>
+        </div>
+        <div class="sim-result">
+          <div class="sim-result-label">Recibirías</div>
+          <div class="sim-result-amount" id="rAmount">$485.00 USDT</div>
+          <div class="sim-result-details">
+            <div class="sim-detail">Comisión: <span id="rFee">~3%</span></div>
+            <div class="sim-detail">Tiempo: <span>Mismo día</span></div>
+          </div>
+        </div>
+        <button class="sim-btn" onclick="window.open('https://play.google.com/store','_blank')">
+          Quiero retirar — Descargar App →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODOS -->
+<section class="metodos" id="metodos">
+  <div class="container">
+    <div class="sec-header center">
+      <div class="sec-label">Métodos de pago</div>
+      <h2 class="sec-title">Recibimos de <span class="cyan">todas tus plataformas</span></h2>
+      <p class="sec-sub">Sin importar cómo pague tu plataforma, el dinero llega a tu saldo. Nosotros nos encargamos de todo.</p>
+    </div>
+    <div class="metodos-grid">
+      <div class="metodo-card">
+        <span class="metodo-icon">💵</span>
+        <div class="metodo-name">USD vía ACH</div>
+        <div class="metodo-desc">Transferencias en USD desde USA a nuestras cuentas en Florida. Automático y trazable.</div>
+        <div class="metodo-tags"><span class="chip">ACH</span><span class="chip">Wire</span></div>
+      </div>
+      <div class="metodo-card">
+        <span class="metodo-icon">💎</span>
+        <div class="metodo-name">USDT / USDC</div>
+        <div class="metodo-desc">Stablecoins directas a wallet verificada. La opción más rápida y de menor fricción.</div>
+        <div class="metodo-tags"><span class="chip c">TRC20</span><span class="chip c">ERC20</span></div>
+      </div>
+      <div class="metodo-card">
+        <span class="metodo-icon">₿</span>
+        <div class="metodo-name">Bitcoin y más</div>
+        <div class="metodo-desc">BTC, ETH, BNB, SOL y más de 350 criptomonedas disponibles vía Binance Link.</div>
+        <div class="metodo-tags"><span class="chip c">BTC</span><span class="chip c">ETH</span><span class="chip">+350</span></div>
+      </div>
+      <div class="metodo-card">
+        <span class="metodo-icon">🌐</span>
+        <div class="metodo-name">Global66</div>
+        <div class="metodo-desc">Canal fiat para recepción y dispersión en moneda local. Tasa de cambio especial.</div>
+        <div class="metodo-tags"><span class="chip">COPM</span><span class="chip">Fiat</span></div>
+      </div>
+      <div class="metodo-card">
+        <span class="metodo-icon">🔗</span>
+        <div class="metodo-name">Binance Link</div>
+        <div class="metodo-desc">CaaS de Binance como infraestructura de wallets. Seguridad y liquidez de clase mundial.</div>
+        <div class="metodo-tags"><span class="chip c">CaaS</span><span class="chip">KYC</span></div>
+      </div>
+      <div class="metodo-card">
+        <span class="metodo-icon">🔧</span>
+        <div class="metodo-name">Cualquier plataforma</div>
+        <div class="metodo-desc">Si tu plataforma tiene restricciones para pagar a terceros, gestionamos el flujo de forma transparente para vos.</div>
+        <div class="metodo-tags"><span class="chip">Sin restricciones</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios" id="testimonios">
+  <div class="container">
+    <div class="sec-header center">
+      <div class="sec-label">Testimonios</div>
+      <h2 class="sec-title">Lo que dicen nuestros <span class="cyan">usuarios</span></h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-text">"Por fin tengo todo en un solo lugar. Lo que me pagan de diferentes plataformas ya no lo tengo que rastrear — todo llega al saldo de la app automáticamente."</div>
+        <div class="test-author">
+          <div class="test-avatar">MR</div>
+          <div>
+            <div class="test-name">María R.</div>
+            <div class="test-loc">Modelo independiente · 🇨🇴 Colombia</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-text">"Pedí mi retiro un martes y el mismo día el dinero estaba en mi cuenta bancaria. Sin montos mínimos, sin esperas. Increíble la rapidez."</div>
+        <div class="test-author">
+          <div class="test-avatar">VS</div>
+          <div>
+            <div class="test-name">Valeria S.</div>
+            <div class="test-loc">Creadora digital · 🇲🇽 México</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-text">"Elegí recibir en USDT directo a mi wallet. El proceso fue en minutos. Tener la wallet verificada me da mucha más seguridad que cualquier otra opción."</div>
+        <div class="test-author">
+          <div class="test-avatar">LP</div>
+          <div>
+            <div class="test-name">Luciana P.</div>
+            <div class="test-loc">Modelo independiente · 🇦🇷 Argentina</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIANZA -->
+<section class="confianza" id="confianza">
+  <div class="container">
+    <div class="trust-box">
+      <span class="trust-script">¡Tu dinero, bien respaldado!</span>
+      <h2 class="sec-title" style="margin-bottom:1rem;">Infraestructura de clase mundial</h2>
+      <div class="trust-text">G7Cripto opera sobre tecnología de G7Fintech SAS, con Binance Link como infraestructura de wallets y Global66 como plataforma de dispersión fiat. No somos banco ni exchange — somos un orquestador non-custodial que conecta tu dinero con la mejor infraestructura disponible en el mercado.</div>
+      <div class="trust-badges">
+        <div class="trust-badge"><div class="trust-badge-dot"></div>Wallet by Binance Link</div>
+        <div class="trust-badge"><div class="trust-badge-dot"></div>+350 Criptomonedas</div>
+        <div class="trust-badge"><div class="trust-badge-dot"></div>Dispersión by Global66</div>
+        <div class="trust-badge"><div class="trust-badge-dot"></div>KYC / KYB obligatorio</div>
+        <div class="trust-badge"><div class="trust-badge-dot"></div>SAGRILAFT</div>
+        <div class="trust-badge"><div class="trust-badge-dot"></div>Contratos digitales</div>
+        <div class="trust-badge"><div class="trust-badge-dot"></div>Non-custodial</div>
+        <div class="trust-badge"><div class="trust-badge-dot"></div>Monitoreo AML</div>
+      </div>
+      <div class="trust-partners">
+        <div class="trust-partner">Wallets: <strong>Binance Link / CaaS</strong></div>
+        <div class="trust-partner">Dispersión fiat: <strong>Global66</strong></div>
+        <div class="trust-partner">Operado por: <strong>G7Fintech SAS</strong></div>
+      </div>
+    </div>
+    <div class="trust-link-row">
+      <a class="trust-link" href="#">Ver información legal completa →</a>
+      <a class="trust-link" href="https://g7pagos.com" style="font-size:12px;">¿Sos estudio o agencia? Conocé G7Pagos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="sec-header center">
+      <div class="sec-label">FAQ</div>
+      <h2 class="sec-title">Preguntas <span class="cyan">frecuentes</span></h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">¿Cómo llegan los pagos de mis plataformas a G7Cripto?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a">Tu plataforma puede pagarte en USD vía ACH a nuestras cuentas en Florida, o en cripto (USDT, USDC, BTC, ETH y más de 350 monedas vía Binance Link). Si tu plataforma tiene restricciones para pagar a terceros, también tenemos solución — gestionamos el flujo de forma que el dinero llegue igual. Vos no necesitás hacer nada técnico.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">¿Cómo funciona el saldo en la app?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a">Todos los pagos de tus plataformas se consolidan en un único saldo en USD. Podés acumular de múltiples plataformas sin límite de tiempo. Cuando querés retirar, solicitás tu monetización y recibís el mismo día.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">¿Hay monto mínimo para retirar?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a">No. Podés solicitar tu retiro por cualquier monto, sin restricciones mínimas.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">¿Cuánto tarda en llegar el dinero cuando retiro?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a">El mismo día que solicitás tu monetización. Los únicos retrasos posibles son por revisiones de compliance, congestión blockchain o demoras bancarias externas ajenas a G7Cripto.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">¿Puedo elegir entre cripto y fiat en cada retiro?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a">Sí. Cada vez que retirás podés elegir: cripto directo a tu wallet personal (USDT, USDC, BTC, ETH y +350 monedas), o transferencia en tu moneda local a tu cuenta bancaria. La decisión es tuya cada vez.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">¿En qué países está disponible?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a">Colombia, México, Argentina, Chile, Ecuador, Panamá y Uruguay. En Ecuador y Panamá el retiro es en USD directamente (países dolarizados). En el resto convertimos a tu moneda local.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">¿G7Cripto custodia mi dinero?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a">No. G7Cripto es non-custodial. La tecnología de wallets la provee Binance Link y la dispersión fiat la ejecuta Global66. G7Cripto orquesta el flujo sin retener fondos propios.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">¿Qué necesito para registrarme?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a">Documento de identidad, verificación KYC y firma del contrato digital. Todo desde la app, en minutos. Tu wallet se activa automáticamente una vez completado el proceso.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">¿Es seguro? ¿Cómo protegen mis datos?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a">Sí. KYC obligatorio, contratos digitales, datos encriptados. Binance y Global66 aplican sus propios controles AML/KYC. G7Cripto cumple con SAGRILAFT y monitoreo transaccional. Tu información no se comparte con terceros.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span class="faq-q-text">¿Cuáles son las comisiones?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a">Las comisiones son competitivas y completamente transparentes — las ves antes de confirmar cualquier operación en la app. Se descuentan del monto a retirar.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESCARGA -->
+<section class="descarga" id="descarga">
+  <div class="container">
+    <div class="descarga-inner">
+      <div>
+        <div class="sec-label">Descargá la app</div>
+        <h2 class="sec-title">Disponible en <span class="cyan">iOS y Android</span></h2>
+        <p class="sec-sub">Toda la infraestructura de G7Cripto en la palma de tu mano. KYC, saldo consolidado, retiro same-day y más de 350 criptomonedas.</p>
+        <div class="store-btns">
+          <a href="https://play.google.com/store" class="store-btn">
+            <span class="store-ico">▶</span>
+            <div>
+              <div class="store-top">Disponible en</div>
+              <div class="store-name">Google Play</div>
+            </div>
+          </a>
+          <a href="https://apps.apple.com" class="store-btn">
+            <span class="store-ico"></span>
+            <div>
+              <div class="store-top">Descargar en</div>
+              <div class="store-name">App Store</div>
+            </div>
+          </a>
+        </div>
+        <div class="descarga-feats">
+          <div class="descarga-feat"><span class="feat-check">✓</span>KYC y wallet activa en minutos</div>
+          <div class="descarga-feat"><span class="feat-check">✓</span>Saldo consolidado de todas tus plataformas</div>
+          <div class="descarga-feat"><span class="feat-check">✓</span>Retiro en cripto o banco — mismo día</div>
+          <div class="descarga-feat"><span class="feat-check">✓</span>+350 criptomonedas vía Binance Link</div>
+          <div class="descarga-feat"><span class="feat-check">✓</span>7 países · Sin montos mínimos</div>
+        </div>
+      </div>
+      <div class="descarga-phone">
+        <div class="descarga-glow"></div>
+        <div class="phone-wrap" style="position:relative;z-index:1;">
+          <div class="phone-notch"></div>
+          <div class="phone-header">
+            <div>
+              <div class="phone-greeting">Tu saldo total</div>
+              <div class="phone-name" style="font-size:20px;font-family:'Nunito',sans-serif;font-weight:900;color:var(--cyan);">$1,248.50</div>
+            </div>
+            <div class="phone-avatar">AG</div>
+          </div>
+          <div style="height:1px;background:var(--border);margin:10px 0;"></div>
+          <div class="phone-sec-label">Pagos recibidos hoy</div>
+          <div class="phone-platform">
+            <div style="display:flex;align-items:center;"><div class="phone-platform-dot" style="background:#e91e8c;"></div><span class="phone-platform-name">Plataforma A</span></div>
+            <span class="phone-platform-amount">+$520.00</span>
+          </div>
+          <div class="phone-platform">
+            <div style="display:flex;align-items:center;"><div class="phone-platform-dot" style="background:#ff6b35;"></div><span class="phone-platform-name">Plataforma B</span></div>
+            <span class="phone-platform-amount">+$418.50</span>
+          </div>
+          <div class="phone-platform">
+            <div style="display:flex;align-items:center;"><div class="phone-platform-dot" style="background:#00d4ff;"></div><span class="phone-platform-name">Plataforma C</span></div>
+            <span class="phone-platform-amount">+$310.00</span>
+          </div>
+          <div style="height:1px;background:var(--border);margin:10px 0;"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="background:var(--cyan);border-radius:10px;padding:10px;text-align:center;cursor:pointer;">
+              <div style="font-size:11px;font-weight:900;color:var(--navy);text-transform:uppercase;">Retirar cripto</div>
+            </div>
+            <div style="background:var(--white08);border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center;cursor:pointer;">
+              <div style="font-size:11px;font-weight:700;color:var(--white70);text-transform:uppercase;">Banco local</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <div class="cta-final-box">
+      <span class="cta-final-script">¡Empezá hoy!</span>
+      <h2 class="cta-final-title">Acumulá. Retirá cuando quieras.<br><span class="cyan">Recibís el mismo día.</span></h2>
+      <p class="cta-final-sub">Descargá la app, verificá en minutos y empezá a consolidar todos tus pagos digitales en un solo lugar.</p>
+      <div class="cta-btns">
+        <a href="https://play.google.com/store" class="btn-primary">▶ Descargar en Google Play</a>
+        <a href="https://apps.apple.com" class="btn-secondary"> Descargar en App Store</a>
+      </div>
+      <div class="cta-tags">
+        <span class="cta-tag">Sin montos mínimos</span>
+        <span class="cta-tag">Same-day al retirar</span>
+        <span class="cta-tag">+350 criptomonedas</span>
+        <span class="cta-tag">Binance Link</span>
+        <span class="cta-tag">7 países LATAM</span>
+        <span class="cta-tag">KYC en minutos</span>
+        <span class="cta-tag">Non-custodial</span>
+        <span class="cta-tag">G7Fintech SAS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo-wrap">
+          <div class="footer-mark">G7</div>
+          <span class="footer-brand">G7<span>Cripto</span></span>
+        </div>
+        <div class="footer-tagline">Infraestructura de pagos cripto-fiat para creadores digitales en LATAM. Operado por G7Fintech SAS.</div>
+      </div>
+      <div class="footer-links-group">
+        <div class="footer-links-title">Legal</div>
+        <div class="footer-links">
+          <a href="#">Términos y condiciones</a>
+          <a href="#">Política de privacidad</a>
+          <a href="#">Información legal</a>
+          <a href="#">SAGRILAFT</a>
+        </div>
+      </div>
+      <div class="footer-links-group">
+        <div class="footer-links-title">Producto</div>
+        <div class="footer-links">
+          <a href="#como">Cómo funciona</a>
+          <a href="#simulador">Simulador</a>
+          <a href="#beneficios">Beneficios</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-links-group">
+        <div class="footer-links-title">Ecosistema G7</div>
+        <div class="footer-links">
+          <a href="https://g7bspay.app">G7BSPay</a>
+          <a href="https://g7pagos.com">G7Pagos (estudios)</a>
+          <a href="#">Soporte</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 G7Fintech SAS. Todos los derechos reservados.</div>
+      <div class="footer-disclaimer">G7Cripto es una plataforma de gestión y consolidación de pagos digitales para modelos independientes. No es un banco, exchange ni servicio de inversión. No custodia fondos directamente. La tecnología de wallets es provista por Binance Link (CaaS) y la dispersión fiat por Global66. Operado por G7Fintech SAS bajo regulación SAGRILAFT. Los tiempos de acreditación pueden variar por factores externos de compliance, congestión blockchain o demoras bancarias. G7Cripto es una plataforma de gestión de pagos. No promete rendimientos ni garantiza ingresos.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// FAQ
+function toggleFaq(el) {
+  const open = el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!open) el.classList.add('open');
+}
+
+// Simulator
+let method = 'cripto';
+function setM(m) {
+  method = m;
+  document.getElementById('mCripto').classList.toggle('on', m === 'cripto');
+  document.getElementById('mFiat').classList.toggle('on', m === 'fiat');
+  calc();
+}
+
+const rates = {
+  CO: { name:'COP', rate:4100, sym:'$', fee:0.035 },
+  MX: { name:'MXN', rate:17.2, sym:'$', fee:0.035 },
+  AR: { name:'ARS', rate:1050, sym:'$', fee:0.04 },
+  CL: { name:'CLP', rate:940,  sym:'$', fee:0.03 },
+  EC: { name:'USD', rate:1,    sym:'$', fee:0.025 },
+  PA: { name:'USD', rate:1,    sym:'$', fee:0.025 },
+  UY: { name:'UYU', rate:39,   sym:'$', fee:0.035 },
+};
+
+function calc() {
+  const amt = parseFloat(document.getElementById('simAmount').value) || 500;
+  const c = document.getElementById('simCountry').value;
+  const r = rates[c];
+  const net = amt * (1 - r.fee);
+  let txt;
+  if (method === 'cripto') {
+    txt = '$' + net.toFixed(2) + ' USDT';
+  } else {
+    if (r.name === 'USD') txt = '$' + net.toFixed(2) + ' USD';
+    else txt = r.sym + ' ' + Math.round(net * r.rate).toLocaleString('es') + ' ' + r.name;
+  }
+  document.getElementById('rAmount').textContent = txt;
+  document.getElementById('rFee').textContent = '~' + (r.fee * 100).toFixed(1) + '%';
+}
+
+document.getElementById('simAmount').addEventListener('input', calc);
+document.getElementById('simCountry').addEventListener('change', calc);
+calc();
+
+// Scroll reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.benefit,.step,.test-card,.pain,.entrada-card,.metodo-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(18px)';
+  el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
